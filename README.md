@@ -12,9 +12,10 @@ aws cloudformation deploy \
 --template-file template.yaml \
 --stack-name tpm-1845 \
 --parameter-overrides SubscriptionEmail="replace_me_with@your.email" \
+--tags Key="owner",Value="ankur.agarwal@devfactory.com" \
 --capabilities CAPABILITY_NAMED_IAM
 ```
-**Note:** Please subscibe to the SNS Notification that you receive on your email
+**Note:** Please replace 'replace_me_with@your.email' with your email and subscibe to the SNS Notification on your email.
 
 # To test the application run the following in the AWS CLI:
 
