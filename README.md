@@ -9,7 +9,7 @@ This applications takes a SQS message as an Input and if there are some banned w
 # To deploy the application run the following in the AWS CLI:
 ```
 aws cloudformation deploy \
---template-file template.yaml \
+--template-file cloudformation/template.yaml \
 --stack-name tpm-1845 \
 --parameter-overrides SubscriptionEmail="replace_me_with@your.email" \
 --capabilities CAPABILITY_NAMED_IAM
