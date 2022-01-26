@@ -16,7 +16,13 @@ def lambda_handler(event, context):
         #Get the textFields to check the Banned Words
         textFields = final_payload.get('textFields')
         bannedWordFlag = False
-        
+        if "textFields" in final_payload:
+            textFields = final_payload.get('textFields')
+        else:
+            return {
+                    'statusCode': 200,
+                    'body': json.dumps('textFields doesnt exists')
+            }
         #Use set as only one occurunce of banned word is needed if found
         bannedWordFound = set([])
         
@@ -39,3 +45,7 @@ def lambda_handler(event, context):
             
             #Publish message to SNS
             snsClient.publish(TopicArn=topicArn, Message=json.dumps(bannedWordSNSDict), Subject="Banned Words in message!")
+        return {
+                    'statusCode': 200,
+                    'body': json.dumps('Message Processed')
+            }
