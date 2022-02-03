@@ -10,18 +10,35 @@ def lambda_handler(event, context):
     
     for record in event['Records']:
         payload = record["body"]
-        #Convert received message into Dict
-        final_payload = eval(payload)
         
-        #Get the textFields to check the Banned Words
-        textFields = final_payload.get('textFields')
-        bannedWordFlag = False
-        if "textFields" in final_payload:
-            textFields = final_payload.get('textFields')
-        else:
+        #Validate Input format to be JSON 
+        try:
+            json.loads(payload)
+        except ValueError as e:
+            print("Error! The Reuest format was not correct.")
+            print("Request:")
+            print(payload)
             return {
                     'statusCode': 200,
-                    'body': json.dumps('textFields doesnt exists')
+                    'body': json.dumps('Request format is not correct!')
+            }
+        
+        #Convert received message into Dict
+        final_payload = eval(payload)
+        bannedWordFlag = False
+        
+        
+        #Check atleast productID and textfields is present in Request
+        if "textFields" in final_payload and "productID" in final_payload:
+            #Get the textFields to check the Banned Words
+            textFields = final_payload.get('textFields')
+        else:
+            print("Error! The Request format was not correct.")
+            print("Request:")
+            print(final_payload)
+            return {
+                    'statusCode': 200,
+                    'body': json.dumps('Request format is not correct!')
             }
         #Use set as only one occurunce of banned word is needed if found
         bannedWordFound = set([])
