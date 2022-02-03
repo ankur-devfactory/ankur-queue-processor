@@ -10,7 +10,7 @@ This applications takes a SQS message as an Input and if there are some banned w
 ```
 aws cloudformation deploy \
 --template-file cloudformation/template.yaml \
---stack-name tpm-1845 \
+--stack-name tpm-1989 \
 --parameter-overrides SubscriptionEmail="replace_me_with@your.email" \
 --capabilities CAPABILITY_NAMED_IAM
 ```
@@ -29,5 +29,5 @@ aws sqs send-message \
 ```
 aws sqs send-message \
 --queue-url "https://sqs.us-east-1.amazonaws.com/162174280605/Ankur-SQS-Queue" \
---message-body '{"productID": "xyzzy420","textFields": {"title": ""}}'
+--message-body '{"productID": "xyzzy420","textFields": {"title": "abcd defgh"}}'
 ```
