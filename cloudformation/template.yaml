@@ -74,8 +74,8 @@ Resources:
         - IAMLambdaRole
         - Arn
       PackageType: Zip
-      Runtime: python3.9
-      Handler: index.lambda_handler
+      Runtime: nodejs14.x
+      Handler: index.handler
       Code:
         S3Bucket: ankur-tpm-1845-code
         S3Key: index.zip
