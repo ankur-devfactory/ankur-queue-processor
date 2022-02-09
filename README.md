@@ -3,7 +3,7 @@ This applications takes a SQS message as an Input and if there are some banned w
 
 # Banned Words
 ```
-"apple", "banana", "cherry", "mango", "strawberry"
+"apple", "banana", "orange", "strawberry", "cherry"
 ```
 
 # To deploy the application run the following in the AWS CLI:
