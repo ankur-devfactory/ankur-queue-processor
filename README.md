@@ -10,7 +10,7 @@ This applications takes a SQS message as an Input and if there are some banned w
 ```
 aws cloudformation deploy \
 --template-file cloudformation/template.yaml \
---stack-name tpm-1989 \
+--stack-name tpm-2015 \
 --parameter-overrides SubscriptionEmail="replace_me_with@your.email" \
 --capabilities CAPABILITY_NAMED_IAM
 ```
